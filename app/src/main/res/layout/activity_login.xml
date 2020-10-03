@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
-    tools:context=".LoginActivity">
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/appName"
@@ -13,7 +11,7 @@
         android:layout_height="47dp"
         android:layout_marginTop="150dp"
         android:fontFamily="@font/pacifico_regular"
-        android:text="@string/recipe_kitchen"
+        android:text="@string/app_name"
         android:textColor="#7041B3"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +41,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Email" />
+            android:hint="@string/username" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -59,7 +57,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/password" />
+            android:hint="@string/password" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -68,6 +66,7 @@
         android:layout_height="52dp"
         android:layout_marginTop="20dp"
         android:text="@string/login"
+        android:onClick="launch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,12 +88,13 @@
         android:id="@+id/Register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/register"
         android:textColor="#261742"
+        android:onClick="launchActivity"
         app:layout_constraintBaseline_toBaselineOf="@+id/createAccount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/createAccount"
         app:layout_constraintTop_toTopOf="@+id/createAccount" />
 
