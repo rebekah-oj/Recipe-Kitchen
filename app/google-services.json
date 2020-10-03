@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "555773618725",
+    "firebase_url": "https://recipe-kitchen.firebaseio.com",
+    "project_id": "recipe-kitchen",
+    "storage_bucket": "recipe-kitchen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555773618725:android:74d6e423235af9f348adcc",
+        "android_client_info": {
+          "package_name": "tap.tap.RecipeKitchen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "555773618725-u2r0bsehtvhra0calnl613l5bffrsj12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDxhYspFOE-aXQ2O2obIcC1hfRF2qXzUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "555773618725-u2r0bsehtvhra0calnl613l5bffrsj12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
