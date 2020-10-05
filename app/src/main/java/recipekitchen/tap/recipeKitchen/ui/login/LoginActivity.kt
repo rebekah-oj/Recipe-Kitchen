@@ -15,8 +15,8 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import recipekitchen.tap.recipeKitchen.MainPageActivity
 import recipekitchen.tap.recipeKitchen.R
+import recipekitchen.tap.recipeKitchen.home.MainPageActivity
 import recipekitchen.tap.recipeKitchen.register.RegistrationActivity
 
 class LoginActivity : AppCompatActivity() {

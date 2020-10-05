@@ -16,16 +16,22 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_register.*
 import recipekitchen.tap.recipeKitchen.R
-import recipekitchen.tap.recipeKitchen.UserProfileFragment
 import recipekitchen.tap.recipeKitchen.databinding.ActivityRegisterBinding
+import recipekitchen.tap.recipeKitchen.profile.UserProfileFragment
+import recipekitchen.tap.recipeKitchen.utils.SharedPreference
 
 class RegistrationActivity : AppCompatActivity() {
     private var imageView: ImageView? = null
@@ -34,16 +40,18 @@ class RegistrationActivity : AppCompatActivity() {
     private var cameraRequestCode = 0
     private var galleryRequestCode = 1
 
+
     //Function to start the verification activity
     fun sendMessage(view: View) {
         val intent = Intent(this, UserProfileFragment::class.java)
         startActivity(intent)
+
     }
 
     var name = ""
-    var pasword = ""
-    val email = ""
-    val confirmPassword = ""
+    var password = ""
+    private var email = ""
+    var gender = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,11 +65,40 @@ class RegistrationActivity : AppCompatActivity() {
             selectImage(this@RegistrationActivity)
         }
 
-        //  name = findViewById<TextInputLayout>(R.id.nameLayout).toString()
-        //  address = findViewById<TextInputLayout>()
-        //   mPreferences = getSharedPreferences(
-        //    sharedPrefFile, MODE_PRIVATE
-        //  )
+        name = findViewById<TextInputLayout>(R.id.nameLayout).toString()
+        gender = findViewById<RadioGroup>(R.id.radioGroup).toString()
+        email = findViewById<TextInputLayout>(R.id.emailLayout).toString()
+        password = findViewById<TextInputLayout>(R.id.password).toString()
+
+        //send data to userProfileFragment
+        val fragmentManager: FragmentManager = supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val userProfileFragment = UserProfileFragment()
+        val username = findViewById<TextInputEditText>(R.id.username)
+        val gender: RadioGroup = findViewById(R.id.radioGroup)
+        registerButton.setOnClickListener {
+            val bundle = Bundle()
+
+            bundle.putString("", username.text.toString())
+            bundle.putString("", gender.toString())
+            userProfileFragment.arguments = bundle
+            fragmentTransaction.add(R.id.userBio, userProfileFragment).commit()
+        }
+
+        //shared preferences
+        val sharedPreferences = SharedPreference(this)
+        var Username = sharedPreferences.getUsername()
+        sharedPreferences.setUsername(name)
+
+        var Email = sharedPreferences.getEmail()
+        sharedPreferences.setEmail(email)
+
+        var Password = sharedPreferences.getPassword()
+        sharedPreferences.setPassword(password)
+
+        var Gender = sharedPreferences.getGender()
+        sharedPreferences.setGender(gender)
+
     }
 
     //Function for radiogroup
@@ -187,14 +224,18 @@ class RegistrationActivity : AppCompatActivity() {
         builder.setItems(options) { dialog, item ->
 
             //take a photo
-            if (options[item] == "Take Photo") {
-                launchCamera(REQUEST_CAMERA_PERMISSION)
+            when {
+                options[item] == "Take Photo" -> {
+                    launchCamera(REQUEST_CAMERA_PERMISSION)
 
-                //select a photo from gallery
-            } else if (options[item] == "Choose from Gallery") {
-                launchGallery(REQUEST_EXTERNAL_STORAGE_PERMISSION)
-            } else if (options[item] == "Cancel") {
-                dialog.dismiss()
+                    //select a photo from gallery
+                }
+                options[item] == "Choose from Gallery" -> {
+                    launchGallery(REQUEST_EXTERNAL_STORAGE_PERMISSION)
+                }
+                options[item] == "Cancel" -> {
+                    dialog.dismiss()
+                }
             }
         }
         builder.show()
@@ -226,7 +267,7 @@ class RegistrationActivity : AppCompatActivity() {
                             cursor.moveToFirst()
                             val columnIndex: Int = cursor.getColumnIndex(filePathColumn[0])
                             val picturePath: String = cursor.getString(columnIndex)
-                            imageViewLayout!!.setImageBitmap(BitmapFactory.decodeFile(picturePath))
+                            imageView!!.setImageBitmap(BitmapFactory.decodeFile(picturePath))
                             cursor.close()
                         }
                     }
@@ -234,9 +275,5 @@ class RegistrationActivity : AppCompatActivity() {
             }
         }
     }
-
-    // val SharedPreferences = "mPreferences"
-    //val String sharedPrefFile = "tap.tap.RecipeKitchen.register"
-
 
 }
