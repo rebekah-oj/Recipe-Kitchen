@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="" />
+            type="recipekitchen.tap.recipeKitchen.register.RegistrationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,6 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         tools:context=".ui.registration.RegistrationActivity">
-
 
         <TextView
             android:id="@+id/gender"
@@ -38,7 +37,7 @@
             android:layout_width="339dp"
             android:layout_height="62dp"
             android:layout_marginTop="16dp"
-            app:error="@{viewModel.form.nameError}"
+            app:error="@{viewModel.form.userNameError}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/card_view">
@@ -46,8 +45,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/name"
-                android:text="@={viewModel.form.name}" />
+                android:hint="@string/username"
+                android:text="@={viewModel.form.userName}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -73,7 +72,7 @@
             android:layout_width="339dp"
             android:layout_height="62dp"
             android:layout_marginTop="8dp"
-            app:error="@{viewModel.form.phoneNumberError}"
+            app:error="@{viewModel.form.passWordError}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailLayout">
@@ -81,9 +80,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/phone_number"
+                android:hint="Password"
                 android:inputType="number"
-                android:text="@={viewModel.form.phoneNumber}" />
+                android:text="@={viewModel.form.passWord}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -92,7 +91,7 @@
             android:layout_width="339dp"
             android:layout_height="62dp"
             android:layout_marginTop="8dp"
-            app:error="@{viewModel.form.addressError}"
+            app:error="@{viewModel.form.confirmPasswordError}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneNumberLayout">
@@ -100,8 +99,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/address"
-                android:text="@={viewModel.form.address}" />
+                android:hint="@string/confirm_password"
+                android:text="@={viewModel.form.confirmPassword}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -131,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:onClick="onRadioButtonClicked"
-                android:text="Female" />
+                android:text="@string/female" />
 
             <RadioButton
                 android:id="@+id/radioButton1"
@@ -140,7 +139,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:onClick="onRadioButtonClicked"
-                android:text="Male" />
+                android:text="@string/male" />
         </RadioGroup>
 
         <androidx.cardview.widget.CardView
@@ -149,7 +148,7 @@
             android:layout_height="116dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="14dp">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imageViewLayout"
@@ -161,7 +160,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
+                android:src="@drawable/ic_baseline_camera_alt_24" />
 
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
