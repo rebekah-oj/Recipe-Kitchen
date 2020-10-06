@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Recipe Kitchen</string>
+    <string name="title">Title</string>
+    <string name="title">Title</string>
+    <string name="shortdescription">shortDescription</string>
+    <string name="recipe">recipe</string>
+    <string name="title">Title</string>
 </resources>
