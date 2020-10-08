@@ -1,4 +1,4 @@
-package tap.tap.RecipeKitchen
+package recipekitchen.tap.recipeKitchen
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

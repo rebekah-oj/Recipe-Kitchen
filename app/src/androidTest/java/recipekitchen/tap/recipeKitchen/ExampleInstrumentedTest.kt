@@ -1,4 +1,4 @@
-package tap.tap.RecipeKitchen
+package recipekitchen.tap.recipeKitchen
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
